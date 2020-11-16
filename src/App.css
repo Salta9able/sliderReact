@@ -1,38 +1,151 @@
-.App {
-  text-align: center;
+@import url('https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@200;700&display=swap');
+
+*, *::after, *::before {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+:root {
+    --color: #f9ff82;
+}
+html, body {
+    height: 100vh;
+    width: 100%;
+    background: rgb(38, 37, 37);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+body {
+    font-family: 'Source Sans Pro', sans-serif;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.app {
+    background: black;
+    width: 1000px;
+    height: 423px;
+    display: grid;
+    grid-template-columns: 640px 1fr;
+    position: relative;
+}
+.hero_wrapper, .prevHero {
+    overflow: hidden;
+    position: relative;
+}
+.hero_wrapper {
+    background-color: var(--color);
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.hero_wrapper .hero {
+    height: 100%;
+    display: flex;
+    position: relative; 
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+.prevHero_wrapper {
+    position: absolute;
+    width: 280px;
+    height: 50%;
+    overflow: hidden;
+    right: 0;
+    background-color: var(--color);
 }
 
-.App-link {
-  color: #61dafb;
+.prevHero .hero_elem {
+    height: 100%;
+    position: absolute;
+    background-size: 50%;
+    transition: transform 0.3s ease;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.nav {
+    position: absolute;
+    bottom: 0;
+    width: 120px;
+    height: 60px;
+    right: 300px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    z-index: 3;
+}
+.nav button {
+    background: black;
+    border: none;
+    cursor: pointer;
+    color: white;
+    font-size: 1.2rem;
+}
+
+ .hero_elem {
+    width: 640px;
+    height: 100%;
+    position: absolute;
+    transition: all 0.3s ease;
+}
+
+.hero_elem.next {
+    transform: translateX(100%);
+    visibility: hidden;
+}
+.hero_elem.current {
+    transform: translateX(0);
+    z-index: 3;
+    visibility: visible;
+}
+.hero_elem.prev {
+    transform: translateX(-100%);
+    visibility: hidden;
+}
+
+.prevHero .next {
+    transform: translateX(0);
+    z-index: 2;
+    visibility: visible;
+}
+.prevHero .current {
+    transform: translateX(-100%);
+    visibility: hidden;
+}
+.prevHero .prev  {
+    transform: translateX(100%);
+    visibility: hidden;
+    
+}
+
+
+.slideNumber {
+    position: absolute;
+    z-index: 3;
+    bottom: 0;
+    right: 0;
+    color: var(--color);
+    width: 150px;
+    padding: 15px;
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    align-items: center;
+}
+.number {
+    text-align: center;
+}
+
+.dash {
+    height: 2px;
+    width: 19px;
+    
+}
+.dash.current {
+    background: var(--color);
+}
+
+.text  {
+    position: absolute;
+    z-index: 6;
+    color: white;
+    bottom: 2rem;
+    left: 2rem;
+}
+
+.text h2 {
+    color: var(--color);
 }
